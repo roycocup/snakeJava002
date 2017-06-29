@@ -1,10 +1,10 @@
  import processing.core.PApplet;
 
 public class Game extends PApplet {
-
-	int w = 10; 
+ 
 	int numCols; 
 	int numRows;
+	int w = 10;
 
 	Snake snake; 
 	Fruit fruit;
@@ -28,6 +28,17 @@ public class Game extends PApplet {
 		snake.draw();
 		fruit.update();
 		fruit.draw();
+		drawGrid();
+	}
+	
+	void drawGrid(){
+		stroke(255);
+		line(0,0,w,w);
+		for(int i = 0; i < numCols; i++){
+			for(int j = 0; j < numCols; j++){
+				line(i*w,j*w,i+(2*w),j+(2*w));
+			}
+		}
 	}
 	
 	public void keyPressed(){

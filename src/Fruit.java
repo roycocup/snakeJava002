@@ -11,19 +11,21 @@ public class Fruit {
 	}
 	
 	void spawn(){
-		pos.x = (int) game.random(game.numCols * game.w);
-		pos.y = (int) game.random(game.numRows * game.w);
+		pos.x = (int) game.random(game.numCols-1) * game.w;
+		pos.y = (int) game.random(game.numRows-1) * game.w;
 	}
 	
 	void update(){
-		if(game.snake.pos.dist(this.pos) < 3){
+		if(game.snake.pos.dist(pos) < 5){
 			spawn();
 		} 
 	}
 	
 	void draw(){
+		game.pushMatrix();
 		game.fill(125,0,125);
 		game.ellipse(pos.x, pos.y, game.w, game.w);
+		game.popMatrix();
 	}
 	
 }

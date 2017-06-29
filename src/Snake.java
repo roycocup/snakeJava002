@@ -5,13 +5,13 @@ public class Snake{
 	public int y;
 	
 	Game game; 
-	Vector dir; 
+	PVector dir; 
 	PVector pos; 
 	
 	public Snake(Game game){
 		this.game = game;
 		pos = new PVector(game.numCols / 2, game.numRows / 2);
-		dir = new Vector();
+		dir = new PVector();
 		assignDirection(0, 1);
 	}
 
