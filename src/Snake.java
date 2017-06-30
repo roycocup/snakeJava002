@@ -22,8 +22,8 @@ public class Snake{
 	}
 	
 	void update(){
-		move();
 		updateElements();
+		move();
 		doCollision();
 	}
 	
@@ -61,16 +61,19 @@ public class Snake{
 		}
 	}
 	
+	
 	void updateElements(){
-		if(elements.size() > tailSize){
-			// shift elements down the array
+		// save history of tailSize
+		if (elements.size() <= tailSize){
+			elements.add(pos);
+		} else {
 			for(int i = 0; i < elements.size()-1; i++){
+				//shift all on back
 				elements.set(i, elements.get(i+1));
 			}
+			//set the last one as current.
+			elements.set(elements.size()-1, pos);
 		}
-		//and add the current one.
-		elements.set(elements.size()-1, pos);
-		System.out.println(elements);
 	}
 	
 
