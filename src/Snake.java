@@ -18,7 +18,7 @@ public class Snake{
 		dir = new PVector();
 		assignDirection(0, 1);
 		elements = new ArrayList<PVector>();
-		elements.add(pos);
+		elements.add(pos.copy());
 	}
 	
 	void update(){
@@ -61,18 +61,18 @@ public class Snake{
 		}
 	}
 	
-	
 	void updateElements(){
-		// save history of tailSize
 		if (elements.size() <= tailSize){
-			elements.add(pos);
-		} else {
+			shiftElements();
+		} 
+		elements.set(elements.size()-1, pos.copy());
+	}
+	
+	void shiftElements(){
+		if (elements.size() > 1){
 			for(int i = 0; i < elements.size()-1; i++){
-				//shift all on back
 				elements.set(i, elements.get(i+1));
 			}
-			//set the last one as current.
-			elements.set(elements.size()-1, pos);
 		}
 	}
 	
