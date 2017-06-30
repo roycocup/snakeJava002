@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import processing.core.PVector;
 
 public class Snake{
@@ -7,12 +9,14 @@ public class Snake{
 	Game game; 
 	PVector dir; 
 	PVector pos; 
+	ArrayList<PVector> elements; 
 	
 	public Snake(Game game){
 		this.game = game;
 		pos = new PVector(game.numCols / 2, game.numRows / 2);
 		dir = new PVector();
 		assignDirection(0, 1);
+		elements = new ArrayList<PVector>();
 	}
 
 	public void assignDirection(int x,int y){
@@ -35,13 +39,21 @@ public class Snake{
 			pos.y = 0;
 	}
 	
+	void doCollision(){
+		if(pos.dist(game.fruit.pos) < 5){
+			game.fruit.spawn();
+		}
+	}
+	
 	void update(){
 		move();
+		doCollision();
 	}
+	
 
 	void draw(){
 		game.fill(255);
-		game.rect(pos.x,pos.y, game.w, game.w);
+		game.rect(pos.x, pos.y, game.w, game.w);
 	}
 
 }

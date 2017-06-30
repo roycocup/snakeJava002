@@ -1,7 +1,7 @@
  import processing.core.PApplet;
 
 public class Game extends PApplet {
- 
+	boolean debug = true;
 	int numCols; 
 	int numRows;
 	int w = 10;
@@ -28,11 +28,14 @@ public class Game extends PApplet {
 		snake.draw();
 		fruit.update();
 		fruit.draw();
-		drawGrid();
+		if(debug){
+			drawGrid();
+		}
+		
 	}
 	
 	void drawGrid(){
-		stroke(255);
+		stroke(255, 0, 254, 50);
 		for(int i = 0; i <= numCols; i++){
 			line(i*w,0,i*w,height);
 		}
@@ -42,6 +45,9 @@ public class Game extends PApplet {
 	}
 	
 	public void keyPressed(){
+		if (key == 'a'){
+			snake.elements.add(snake.pos);
+		}
 		switch(keyCode){
 		case 37:
 			snake.assignDirection(-1,0);
