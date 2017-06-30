@@ -35,10 +35,11 @@ public class Game extends PApplet {
 		stroke(255);
 		line(0,0,w,w);
 		for(int i = 0; i < numCols; i++){
-			for(int j = 0; j < numCols; j++){
-				line(i*w,j*w,i+(2*w),j+(2*w));
-			}
+			line(i*w,0, height, i*w);
 		}
+//		for(int j = 0; j < numCols; j++){
+//			
+//		}
 	}
 	
 	public void keyPressed(){
