@@ -46,7 +46,7 @@ public class Game extends PApplet {
 	
 	public void keyPressed(){
 		if (key == 'a'){
-			snake.elements.add(snake.pos);
+			snake.doCollision();
 		}
 		switch(keyCode){
 		case 37:
