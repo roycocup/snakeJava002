@@ -44,12 +44,15 @@ public class Snake{
 		pos.y += dir.y * game.w;
 		
 		if (pos.x < 0)
-			pos.x = game.width;
-		if (pos.x > game.width)
+			pos.x = game.width-game.w;
+		
+		if (pos.x >= game.width)
 			pos.x = 0;
+		
 		if (pos.y < 0)
-			pos.y = game.height;
-		if (pos.y > game.height)
+			pos.y = game.height-game.w;
+		
+		if (pos.y >= game.height)
 			pos.y = 0;
 	}
 	

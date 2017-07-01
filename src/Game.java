@@ -45,12 +45,7 @@ public class Game extends PApplet {
 	}
 	
 	public void keyPressed(){
-		if (key == 'p'){
-			if (frameRate > 1)
-				frameRate(1);
-			else
-				frameRate(10);
-		}
+		
 		if (key == 'a'){
 			snake.doCollision();
 		}
